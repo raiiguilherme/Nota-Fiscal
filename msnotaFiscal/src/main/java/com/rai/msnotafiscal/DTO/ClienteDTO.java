@@ -1,5 +1,7 @@
 package com.rai.msnotafiscal.DTO;
 
+import com.rai.msnotafiscal.domain.NotaFiscal;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,7 @@ public class ClienteDTO { //sempre lembrar de colocar exatamente os mesmos nomes
     private String nome;
     private String cpf;
     private List<CompraDTO> compras = new ArrayList<>();
+
+
+
 }
