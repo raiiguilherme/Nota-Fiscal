@@ -7,36 +7,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "compras")
-public class Compra implements Serializable {
-
+@Table(name = "produtos")
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_compra;
-
+    private Long id_produto;
+    private String nome_produto;
     private Double valor;
-
-    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Produto> produtos = new ArrayList<>();
-
-
-
     @ManyToOne
-    @JoinColumn(name = "id_cliente")
+    @JoinColumn(name = "id_compra")
     @JsonIgnore
-    private Cliente cliente;
-
-
-
+    private Compra compra;
 }

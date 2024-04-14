@@ -1,7 +1,9 @@
 package com.rai.mscliente.services;
 
 import com.rai.mscliente.domain.Compra;
+import com.rai.mscliente.repository.ClienteRepository;
 import com.rai.mscliente.repository.CompraRepository;
+import com.rai.mscliente.repository.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +12,20 @@ import org.springframework.stereotype.Service;
 public class CompraService {
     private final CompraRepository repository;
 
-    public Compra criarCompra(Compra compra){
-        repository.save(compra);
+    private final ProdutoRepository produtoRepository;
+    private final ClienteRepository clienteRepository;
+
+
+    public Compra criarCompra(String cpf, Compra compra){
+
+       var cliente = clienteRepository.findClienteByCpf(cpf);
+       compra.setCliente(cliente.get());
+        repository.save(compra); //salvando primeiro a compra
+        for(int i=0; i<compra.getProdutos().size(); i++){
+            compra.getProdutos().get(i).setCompra(compra);//colocando a mesma compra para todos os produtos
+            produtoRepository.save(compra.getProdutos().get(i));
+
+        }
         return compra;
 
     }
