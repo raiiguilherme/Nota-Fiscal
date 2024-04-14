@@ -4,6 +4,7 @@ Neste exemplo, criei do zero dois microsserviços, um de cliente (este que por s
 
 ## Funcionamento:
 
+### Cliente:
   * Entrando na url: "localhost:8085/clientes" e passando no corpo da requisição um nome e um cpf, é possivel criar um cliente.
  * Logo após criar um cliente, é possivel criar uma compra para esse cliente na url: "localhost:8085/clientes/compra/{cpf}" passando o cpf na url.
  * Após criar a compra, ela estará associada a um cliente. É possivel observar isso dando um get na url "localhost:8085/clientes" passando o cpf do cliente via parametros.
