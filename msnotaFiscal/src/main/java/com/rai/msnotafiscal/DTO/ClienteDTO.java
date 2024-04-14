@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClienteDTO { //sempre lembrar de colocar exatamente os mesmos nomes nas variaveis
-    private Integer id;
+    private Long id;
     private String nome;
     private String cpf;
     private List<CompraDTO> compras = new ArrayList<>();

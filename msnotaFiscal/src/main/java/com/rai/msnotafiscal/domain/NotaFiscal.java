@@ -16,5 +16,6 @@ import java.util.UUID;
 public class NotaFiscal {
     @Id
     private UUID codigoNotaFiscal = UUID.randomUUID();
-    private Integer id_cliente;
+    private Long id_cliente;
+    private Long id_compra;
 }

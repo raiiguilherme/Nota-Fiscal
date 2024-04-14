@@ -17,6 +17,7 @@ public class NotaFiscalService {
                 NotaFiscal notaFiscal = new NotaFiscal();
                 var cliente = clientesFeing.obterClientePorCpf(cpf);
                 notaFiscal.setId_cliente(cliente.getId());
+                notaFiscal.setId_compra(cliente.getCompras().getLast().getId_compra());//pegando a ultima compra do cliente e criando sua nota fiscal
                 repository.save(notaFiscal);
                 return notaFiscal;
         }

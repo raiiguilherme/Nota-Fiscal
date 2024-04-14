@@ -11,8 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompraDTO {   //sempre lembrar de colocar exatamente os mesmos nomes nas variaveis
-    private Long id_compras;
-    private String produtos;
+    private Long id_compra;
     private Double valor;
     @JsonIgnore
     private ClienteDTO cliente;
