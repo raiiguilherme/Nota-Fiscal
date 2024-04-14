@@ -4,6 +4,7 @@ import com.rai.mscliente.DTO.ClienteDTO;
 import com.rai.mscliente.domain.Cliente;
 import com.rai.mscliente.domain.Compra;
 import com.rai.mscliente.domain.Produto;
+import com.rai.mscliente.exceptions.DomainException;
 import com.rai.mscliente.services.ClienteService;
 import com.rai.mscliente.services.CompraService;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,13 @@ public class ClienteController {
     public ResponseEntity<Cliente> criarCliente(@RequestBody ClienteDTO clienteDTO){
         var cliente = new Cliente();
           BeanUtils.copyProperties(clienteDTO,cliente);
+         if(service.obterClientePorCpf(cliente.getCpf()).isEmpty()){
+
         service.criarCliente(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
+        }
+         throw new DomainException("O cpf informado ja existe");
+
 
 
     }

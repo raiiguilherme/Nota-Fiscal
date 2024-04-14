@@ -14,6 +14,7 @@ public class ClienteService {
     private final ClienteRepository repository;
 
     public void criarCliente(Cliente cliente){
+
         repository.save(cliente);
     }
 
