@@ -6,7 +6,25 @@ Neste exemplo, criei do zero dois microsserviços, um de cliente (este que por s
 
 ### Cliente:
   * Entrando na url: "localhost:8085/clientes" e passando no corpo da requisição um nome e um cpf, é possivel criar um cliente.
- * Logo após criar um cliente, é possivel criar uma compra para esse cliente na url: "localhost:8085/clientes/compra/{cpf}" passando o cpf na url.
+ * Logo após criar um cliente, é possivel criar uma compra para esse cliente na url: "localhost:8085/clientes/compra/{cpf}" passando o cpf na url e passar um objeto produtos com uma lista de produtos no corpo da requisição.
+   #### EXEMPLO:
+   	{
+	
+	"produtos": [{
+		"nome_produto":"RTX 4090",
+		"valor":10000
+	},
+	{
+		"nome_produto":"Ryzen 5",
+		"valor":2000
+	}
+	
+		
+	]
+	
+	
+}
+
  * Após criar a compra, ela estará associada a um cliente. É possivel observar isso dando um get na url "localhost:8085/clientes" passando o cpf do cliente via parametros.
 
 ### Nota fiscal:
@@ -17,7 +35,8 @@ Neste exemplo, criei do zero dois microsserviços, um de cliente (este que por s
    * {
 	"codigoNotaFiscal": "75a04751-8def-4606-bb90-1ac7f8ad46b8",
 	"id_cliente": 11,
-	"id_compra": 17
+	"id_compra": 17,
+	"valor_da_compra": 2000
   }
 
 
