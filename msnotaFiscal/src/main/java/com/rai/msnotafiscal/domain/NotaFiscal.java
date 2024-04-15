@@ -18,4 +18,5 @@ public class NotaFiscal {
     private UUID codigoNotaFiscal = UUID.randomUUID();
     private Long id_cliente;
     private Long id_compra;
+    private Double valor_da_compra;
 }

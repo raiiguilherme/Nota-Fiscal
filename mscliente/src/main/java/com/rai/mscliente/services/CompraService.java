@@ -17,12 +17,20 @@ public class CompraService {
 
 
     public Compra criarCompra(String cpf, Compra compra){
-
+        Double valor_total = 0.0;
        var cliente = clienteRepository.findClienteByCpf(cpf);
        compra.setCliente(cliente.get());
+
+        for(int i=0; i<compra.getProdutos().size(); i++){
+            valor_total += compra.getProdutos().get(i).getValor(); //adicionando o valor de todos os produtos somados
+        }
+
+        compra.setValor(valor_total);
+
         repository.save(compra); //salvando primeiro a compra
         for(int i=0; i<compra.getProdutos().size(); i++){
             compra.getProdutos().get(i).setCompra(compra);//colocando a mesma compra para todos os produtos
+            valor_total += compra.getProdutos().get(i).getValor();
             produtoRepository.save(compra.getProdutos().get(i));
 
         }
